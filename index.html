@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Me | Ellia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,600;9..144,0,700;9..144,0,900;9..144,1,600&family=Nunito:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#414B9E;--ceil:#9792CB;--purple:#AA74A0;--sand:#E2C99E;--ruby:#852736;
+    --cream:#FBF4E9;--ink:#2E2438;--soft:#6B5E6E;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{color:var(--ink);font-family:'Nunito',system-ui,sans-serif;line-height:1.55;min-height:100vh;
+    background:linear-gradient(160deg,var(--blue) 0%,var(--purple) 48%,var(--sand) 100%);background-attachment:fixed;}
+  .nav{max-width:860px;margin:0 auto;padding:24px 18px 0;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;}
+  .brand{font-family:'Fraunces',serif;font-weight:900;font-size:26px;color:var(--cream);}
+  .nav-links{display:flex;gap:8px;flex-wrap:wrap;}
+  .nav-links a{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;color:var(--blue);background:var(--cream);padding:9px 16px;border-radius:40px;border:2px solid var(--blue);transition:transform .15s,background .15s,color .15s;}
+  .nav-links a:hover{transform:translateY(-2px) rotate(-1.5deg);background:var(--sand);}
+  .nav-links a.active{background:var(--blue);color:var(--sand);}
+  .sheet{max-width:860px;margin:18px auto 44px;background:var(--cream);padding:48px 52px;border-radius:28px;border:3px solid var(--blue);box-shadow:10px 10px 0 var(--ruby);}
+  .eyebrow{display:inline-block;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cream);background:var(--ruby);padding:6px 13px;border-radius:30px;}
+  h1{font-family:'Fraunces',serif;font-size:clamp(46px,9vw,78px);font-weight:900;line-height:.95;margin:16px 0 10px;color:var(--blue);letter-spacing:-.02em;}
+  h1 .wave{display:inline-block;transform-origin:70% 70%;animation:wave 2.4s ease-in-out infinite;}
+  @keyframes wave{0%,60%,100%{transform:rotate(0)}10%{transform:rotate(14deg)}20%{transform:rotate(-8deg)}30%{transform:rotate(14deg)}40%{transform:rotate(-4deg)}50%{transform:rotate(10deg)}}
+  .tagline{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(19px,3vw,26px);color:var(--ruby);max-width:36ch;margin-bottom:38px;}
+
+  .lead-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:38px;align-items:start;}
+  .bio p{font-size:17px;margin-bottom:15px;}
+  .bio p.big{font-size:20px;color:var(--blue);font-weight:700;}
+  .card{background:var(--ceil);padding:24px;border-radius:20px;border:3px solid var(--blue);}
+  .card h3{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:14px;padding-bottom:10px;border-bottom:2px dashed var(--blue);}
+  .row{display:flex;justify-content:space-between;gap:12px;padding:8px 0;font-size:15px;font-weight:600;color:var(--ink);}
+  .row .k{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);padding-top:4px;font-weight:700;}
+  .row .v{text-align:right;}
+  @media(max-width:680px){.lead-grid{grid-template-columns:1fr;gap:26px;}}
+
+  .band{margin-top:44px;}
+  .band h2{font-family:'Fraunces',serif;font-size:30px;font-weight:900;color:var(--ruby);margin-bottom:4px;}
+  .band .sub{font-size:15px;color:var(--soft);font-weight:600;margin-bottom:20px;}
+  .work{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .wcell{background:var(--cream);padding:22px;border-radius:18px;border:3px solid var(--blue);transition:transform .18s;}
+  .wcell:nth-child(1){box-shadow:5px 5px 0 var(--purple);}
+  .wcell:nth-child(2){box-shadow:5px 5px 0 var(--ceil);}
+  .wcell:nth-child(3){box-shadow:5px 5px 0 var(--sand);}
+  .wcell:nth-child(4){box-shadow:5px 5px 0 var(--ruby);}
+  .wcell:hover{transform:translateY(-4px) rotate(-1deg);}
+  .wcell .tag{display:inline-block;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--cream);background:var(--purple);padding:4px 10px;border-radius:20px;}
+  .wcell h4{font-family:'Fraunces',serif;font-size:21px;font-weight:700;color:var(--blue);margin:10px 0 8px;}
+  .wcell p{font-size:14.5px;color:var(--soft);font-weight:600;line-height:1.5;}
+  @media(max-width:600px){.work{grid-template-columns:1fr;}}
+
+  .interests{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;}
+  .interests span{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;padding:8px 15px;border-radius:30px;border:2px solid var(--blue);color:var(--blue);cursor:default;transition:transform .15s;}
+  .interests span:nth-child(4n+1){background:var(--sand);}
+  .interests span:nth-child(4n+2){background:var(--purple);color:var(--cream);}
+  .interests span:nth-child(4n+3){background:var(--ceil);}
+  .interests span:nth-child(4n+4){background:var(--cream);}
+  .interests span:hover{transform:translateY(-3px) rotate(-2deg);}
+
+  .cta{margin-top:46px;text-align:center;background:var(--blue);padding:34px;border-radius:22px;}
+  .cta p{font-family:'Fraunces',serif;font-style:italic;font-size:19px;color:var(--sand);margin-bottom:18px;}
+  .cta a{font-family:'Space Mono',monospace;font-size:14px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;color:var(--blue);background:var(--sand);padding:14px 26px;border-radius:40px;display:inline-block;transition:transform .15s;}
+  .cta-email{font-family:'Space Mono',monospace;font-size:14px;font-weight:700;letter-spacing:.05em;color:var(--blue);background:var(--sand);padding:14px 26px;border-radius:40px;display:inline-block;}
+  .cta a:hover{transform:scale(1.05) rotate(-1deg);}
+  .footer{margin-top:30px;text-align:center;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--soft);text-transform:uppercase;}
+  @media(max-width:600px){.sheet{padding:32px 24px;border-radius:22px;box-shadow:6px 6px 0 var(--ruby);}.nav{justify-content:center;}}
+  @media(prefers-reduced-motion:reduce){h1 .wave{animation:none;}*{transition:none!important;}}
+</style>
+</head>
+<body>
+  <nav class="nav">
+    <span class="brand">Ellia Morse</span>
+    <div class="nav-links">
+      <a href="index.html" class="active">About Me</a>
+      <a href="showcase.html">Showcase</a>
+      <a href="instructions.html">Instructions</a>
+    </div>
+  </nav>
+
+  <div class="sheet">
+    <span class="eyebrow">Personal Portfolio</span>
+    <h1>Hi, I'm Ellia <span class="wave">&#128075;</span></h1>
+    <p class="tagline">Engineer &amp; Educator</p>
+
+    <div class="lead-grid">
+      <div class="bio">
+        <p class="big">I build things that teach people to use AI well.</p>
+        <p>I'm an iOS engineer at Alarm.com, an advocate for responsible AI usage, and an artist. The idea is to create human-centric technology and to teach young people how to use these tools in a way that amplifies their impact.</p>
+        <p>Away from my desk, I hunt estate sales for Y2K fashion and midcentury decor. I paint landscapes (currently working on a piece as tall as I am!) and play video games, with a soft spot for roguelikes.</p>
+      </div>
+      <aside class="card">
+        <h3>At a glance</h3>
+        <div class="row"><span class="k">Based</span><span class="v">Kansas</span></div>
+        <div class="row"><span class="k">Role</span><span class="v">iOS Engineer</span></div>
+        <div class="row"><span class="k">At</span><span class="v">Alarm.com</span></div>
+        <div class="row"><span class="k">Also</span><span class="v">AI educator</span></div>
+        <div class="row"><span class="k">Off-hours</span><span class="v">Painting, gaming</span></div>
+      </aside>
+    </div>
+
+    <div class="band">
+      <h2>What I work on</h2>
+      <p class="sub">A few of the things keeping me busy.</p>
+      <div class="work">
+        <div class="wcell">
+          <span class="tag">Engineering</span>
+          <h4>Alarm.com AI Activity Search</h4>
+          <p>Building AI-powered activity search on iOS, bringing natural language and smart retrieval to the people who use the app every day.</p>
+        </div>
+        <div class="wcell">
+          <span class="tag">Advisory</span>
+          <h4>USD 497 AI Board</h4>
+          <p>A seat on the Douglas County school district's AI advisory board, shaping district policy on student data privacy and classroom AI use.</p>
+        </div>
+        <div class="wcell">
+          <span class="tag">Education</span>
+          <h4>Authentiya</h4>
+          <p>An AI-literacy platform framed as an "AI driver's license" for K-12 students, built on responsible and transparent use. Curriculum, procurement, and code.</p>
+        </div>
+        <div class="wcell">
+          <span class="tag">Creative</span>
+          <h4>All things creative</h4>
+          <p>Painting miniatures and murals, plus a steady habit of making things by hand away from the screen.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="band">
+      <h2>Beyond the work</h2>
+      <p class="sub">What I make, play, and collect.</p>
+      <div class="interests">
+        <span>Painting landscapes</span>
+        <span>Miniatures &amp; murals</span>
+        <span>Roguelikes</span>
+        <span>Y2K fashion</span>
+        <span>Midcentury decor</span>
+        <span>Estate-sale hunting</span>
+        <span>Responsible AI</span>
+      </div>
+    </div>
+
+    <div class="cta">
+      <p>For collaborations, AI literacy work, or just to talk shop about painting and roguelikes.</p>
+      <span class="cta-email">elliagmorse@gmail.com</span>
+    </div>
+
+    <div class="footer">Personal Portfolio &middot; Made with Claude</div>
+  </div>
+</body>
+</html>

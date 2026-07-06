@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Showcase | Project Generator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,900&family=Nunito:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#414B9E;--ceil:#9792CB;--purple:#AA74A0;--sand:#E2C99E;--ruby:#852736;
+    --cream:#FBF4E9;--ink:#2E2438;--soft:#6B5E6E;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{color:var(--ink);font-family:'Nunito',system-ui,sans-serif;line-height:1.55;min-height:100vh;
+    background:linear-gradient(160deg,var(--blue) 0%,var(--purple) 48%,var(--sand) 100%);background-attachment:fixed;}
+  .nav{max-width:860px;margin:0 auto;padding:24px 18px 0;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;}
+  .brand{font-family:'Fraunces',serif;font-weight:900;font-size:26px;color:var(--cream);}
+  .nav-links{display:flex;gap:8px;flex-wrap:wrap;}
+  .nav-links a{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;color:var(--blue);background:var(--cream);padding:9px 16px;border-radius:40px;border:2px solid var(--blue);transition:transform .15s,background .15s,color .15s;}
+  .nav-links a:hover{transform:translateY(-2px) rotate(-1.5deg);background:var(--sand);}
+  .nav-links a.active{background:var(--blue);color:var(--sand);}
+  .sheet{max-width:860px;margin:18px auto 44px;background:var(--cream);padding:48px 52px;border-radius:28px;border:3px solid var(--blue);box-shadow:10px 10px 0 var(--ruby);}
+  .eyebrow{display:inline-block;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cream);background:var(--ruby);padding:6px 13px;border-radius:30px;}
+  h1{font-family:'Fraunces',serif;font-size:clamp(42px,8vw,68px);font-weight:900;line-height:.98;margin:16px 0 10px;color:var(--blue);letter-spacing:-.02em;}
+  .intro{font-size:17px;font-weight:600;color:var(--soft);max-width:60ch;margin-bottom:30px;}
+
+  .generator{border:3px solid var(--blue);border-radius:24px;overflow:hidden;background:var(--cream);margin-bottom:14px;box-shadow:8px 8px 0 var(--purple);}
+  .gen-top{background:var(--blue);color:var(--sand);padding:14px 24px;display:flex;justify-content:space-between;align-items:center;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;}
+  .gen-top .lot{color:var(--ceil);}
+  .gen-body{padding:40px 34px 36px;text-align:center;min-height:240px;display:flex;flex-direction:column;justify-content:center;}
+  .cat{display:inline-block;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--cream);background:var(--ruby);padding:5px 14px;border-radius:30px;margin:0 auto 16px;}
+  .proj-name{font-family:'Fraunces',serif;font-size:clamp(30px,5.5vw,46px);font-weight:900;line-height:1.04;margin-bottom:14px;color:var(--blue);transition:opacity .16s,transform .16s;}
+  .proj-desc{font-size:16.5px;font-weight:600;color:var(--soft);max-width:52ch;margin:0 auto;transition:opacity .16s;}
+  .rolling .proj-name{opacity:.3;transform:scale(.97);}
+  .rolling .proj-desc{opacity:.2;}
+  .controls{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:26px;}
+  .btn{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:15px 28px;border-radius:40px;cursor:pointer;border:3px solid var(--blue);transition:transform .15s,background .15s;}
+  .btn-primary{background:var(--purple);color:var(--cream);}
+  .btn-primary:hover{transform:translateY(-3px) rotate(-1.5deg);background:var(--ruby);}
+  .btn-primary:active{transform:translateY(0) scale(.97);}
+  .btn-ghost{background:var(--cream);color:var(--blue);}
+  .btn-ghost:hover{transform:translateY(-3px) rotate(1.5deg);background:var(--sand);}
+  .counter{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:var(--blue);text-align:center;letter-spacing:.04em;margin-bottom:34px;}
+
+  .alllist{margin-top:14px;}
+  .alllist h2{font-family:'Fraunces',serif;font-size:26px;font-weight:900;color:var(--ruby);margin-bottom:4px;}
+  .alllist .sub{font-size:14.5px;font-weight:600;color:var(--soft);margin-bottom:18px;}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .cell{background:var(--cream);padding:16px 18px;border-radius:16px;border:2px solid var(--blue);transition:transform .15s;}
+  .cell:nth-child(5n+1){box-shadow:4px 4px 0 var(--purple);}
+  .cell:nth-child(5n+2){box-shadow:4px 4px 0 var(--ceil);}
+  .cell:nth-child(5n+3){box-shadow:4px 4px 0 var(--sand);}
+  .cell:nth-child(5n+4){box-shadow:4px 4px 0 var(--ruby);}
+  .cell:nth-child(5n+5){box-shadow:4px 4px 0 var(--blue);}
+  .cell:hover{transform:translateY(-3px) rotate(-1deg);}
+  .cell .n{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:var(--ruby);}
+  .cell .t{font-family:'Fraunces',serif;font-size:17px;font-weight:700;color:var(--blue);margin:2px 0 3px;}
+  .cell .d{font-size:13px;font-weight:600;color:var(--soft);line-height:1.42;}
+  .footer{margin-top:34px;text-align:center;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--soft);text-transform:uppercase;}
+  .btn:focus-visible{outline:3px solid var(--ruby);outline-offset:3px;}
+  @media(max-width:600px){.sheet{padding:32px 22px;border-radius:22px;box-shadow:6px 6px 0 var(--ruby);}.grid{grid-template-columns:1fr;}.nav{justify-content:center;}.gen-body{padding:30px 20px;}}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;}}
+</style>
+</head>
+<body>
+  <nav class="nav">
+    <span class="brand">Ellia Morse</span>
+    <div class="nav-links">
+      <a href="index.html">About Me</a>
+      <a href="showcase.html" class="active">Showcase</a>
+      <a href="instructions.html">Instructions</a>
+    </div>
+  </nav>
+
+  <div class="sheet">
+    <span class="eyebrow">Project Showcase</span>
+    <h1>Find your project</h1>
+    <p class="intro">Not sure what to build? Roll the generator. Every idea here runs entirely in your browser and hosts for free, with enough moving parts to be worth showing off. Land on one you like, then take it to Claude.</p>
+
+    <div class="generator">
+      <div class="gen-top">
+        <span>Project Generator</span>
+        <span class="lot" id="lotLabel">Lot 00 / 30</span>
+      </div>
+      <div class="gen-body" id="genBody">
+        <div class="cat" id="cat">Press the button</div>
+        <div class="proj-name" id="name">Ready when you are</div>
+        <div class="proj-desc" id="desc">Thirty browser-only project ideas are loaded and waiting. Hit "Roll a project" to get your first one.</div>
+        <div class="controls">
+          <button class="btn btn-primary" id="rollBtn">Roll a project</button>
+          <button class="btn btn-ghost" id="copyBtn">Copy the prompt</button>
+        </div>
+      </div>
+    </div>
+    <div class="counter" id="counter">30 projects in the deck &middot; no repeats until you have seen them all</div>
+
+    <div class="alllist">
+      <h2>The full deck</h2>
+      <p class="sub">Every project, if you would rather browse than roll.</p>
+      <div class="grid" id="grid"></div>
+    </div>
+
+    <div class="footer">Project Showcase &middot; Made with Claude</div>
+  </div>
+
+<script>
+  const projects = [
+    {c:"Game", t:"Memory Match Game", d:"A full card-matching game with a move counter, a timer, and a win screen when every pair is cleared."},
+    {c:"Tool", t:"Budget Tracker", d:"Log income and expenses by category, see a running balance, and a bar breakdown of where money goes. Saves in the browser."},
+    {c:"Productivity", t:"Kanban Task Board", d:"Drag task cards between To Do, Doing, and Done columns, add and delete cards, and keep the board between visits."},
+    {c:"Game", t:"Typing Speed Test", d:"Type a scrolling passage against a clock and get your words-per-minute, accuracy, and a personal best."},
+    {c:"Creative", t:"Drawing Canvas", d:"A paint app with brush sizes, a color picker, undo, clear, and a button to save your art as an image."},
+    {c:"Tool", t:"Pomodoro Focus Timer", d:"Cycle work and break sessions, track how many rounds you finished, and get a sound when each one ends."},
+    {c:"Game", t:"Snake", d:"The classic game: steer the snake to eat and grow, with a score, rising speed, and a game-over restart."},
+    {c:"Data", t:"Quiz App with Scoring", d:"Multiple-choice questions with a running score, a progress bar, and a results page that reviews your answers."},
+    {c:"Tool", t:"World Clock Board", d:"Track the current time across several cities at once, each ticking live, with a day or night marker and an add-a-city button."},
+    {c:"Game", t:"2048", d:"Slide numbered tiles to combine matching pairs and chase 2048, with a live score and an undo button."},
+    {c:"Creative", t:"Markdown Note Editor", d:"Write in markdown on one side and see it render live on the other, with your notes saved in the browser."},
+    {c:"Tool", t:"Expense Split Calculator", d:"Add people and shared costs, then work out exactly who owes whom and by how much for a trip or dinner."},
+    {c:"Game", t:"Hangman", d:"Guess the hidden word letter by letter with a drawn figure, a category picker, and a win-or-lose ending."},
+    {c:"Data", t:"Flashcard Study Deck", d:"Build decks of question-and-answer cards, flip through them, shuffle, and mark which ones you got right."},
+    {c:"Tool", t:"Countdown to Event", d:"Pick a future date and show a live countdown of days, hours, minutes, and seconds ticking down to it."},
+    {c:"Game", t:"Minesweeper", d:"Reveal a grid, flag the hidden mines using the number clues, and win by clearing every safe square."},
+    {c:"Creative", t:"Playlist Mood Board", d:"Build a themed list of songs with cover colors and notes, reorder by dragging, and save the set."},
+    {c:"Tool", t:"Unit Conversion Suite", d:"One app that converts length, weight, temperature, and currency, with a clean tabbed layout for each type."},
+    {c:"Game", t:"Whack-a-Mole with Levels", d:"Moles pop faster each level, with a score, a timer, lives, and a high score that sticks between plays."},
+    {c:"Data", t:"Habit Streak Tracker", d:"Track several habits on a calendar grid, build streaks, and see your longest run for each one. Saves locally."},
+    {c:"Tool", t:"Color Palette Generator", d:"Generate harmonious palettes, lock the colors you like, reroll the rest, and copy the hex codes with a click."},
+    {c:"Game", t:"Tic Tac Toe vs Computer", d:"Play against an AI opponent that actually tries to win or block, with a scoreboard across rounds."},
+    {c:"Creative", t:"Story Branch Game", d:"A choose-your-own-adventure where each choice leads to a new scene and different endings."},
+    {c:"Data", t:"Poll and Results Viewer", d:"Ask a question, let people vote across options, and show the tally as an animated bar chart that updates live."},
+    {c:"Tool", t:"Recipe Scaler", d:"Enter a recipe and a serving count, and it rescales every ingredient amount up or down for you."},
+    {c:"Game", t:"Simon Memory Game", d:"Repeat a growing sequence of lit colors and sounds, with rising speed and a score for your longest streak."},
+    {c:"Creative", t:"Meme Generator", d:"Upload an image, add top and bottom text you can drag and restyle, then download the finished meme."},
+    {c:"Tool", t:"Tip and Bill Splitter", d:"Enter a bill, choose a tip, split across people, and round up or down, all updating live as you type."},
+    {c:"Data", t:"Personal Finance Chart", d:"Enter monthly numbers and see them drawn as a line and pie chart, so you can spot trends at a glance."},
+    {c:"Game", t:"Word Scramble", d:"Unscramble a shuffled word against a timer, with hints, a score, and new words drawn from a category."}
+  ];
+
+  const grid = document.getElementById('grid');
+  projects.forEach((p,i)=>{
+    const cell = document.createElement('div');
+    cell.className='cell';
+    cell.innerHTML = `<div class="n">${String(i+1).padStart(2,'0')}</div><div class="t">${p.t}</div><div class="d">${p.d}</div>`;
+    grid.appendChild(cell);
+  });
+
+  const catEl=document.getElementById('cat');
+  const nameEl=document.getElementById('name');
+  const descEl=document.getElementById('desc');
+  const lotEl=document.getElementById('lotLabel');
+  const bodyEl=document.getElementById('genBody');
+  const rollBtn=document.getElementById('rollBtn');
+  const copyBtn=document.getElementById('copyBtn');
+
+  let bag=[];
+  let current=null;
+
+  function refill(){ bag=projects.map((_,i)=>i); for(let i=bag.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[bag[i],bag[j]]=[bag[j],bag[i]];} }
+
+  function show(idx){
+    const p=projects[idx];
+    current=p;
+    catEl.textContent=p.c;
+    nameEl.textContent=p.t;
+    descEl.textContent=p.d;
+    lotEl.textContent='Lot '+String(idx+1).padStart(2,'0')+' / 30';
+  }
+
+  function roll(){
+    if(bag.length===0) refill();
+    const idx=bag.pop();
+    const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduce){ show(idx); return; }
+    bodyEl.classList.add('rolling');
+    let flips=0;
+    const spin=setInterval(()=>{
+      const r=Math.floor(Math.random()*projects.length);
+      nameEl.textContent=projects[r].t;
+      catEl.textContent=projects[r].c;
+      flips++;
+      if(flips>7){clearInterval(spin);bodyEl.classList.remove('rolling');show(idx);}
+    },70);
+  }
+
+  function copyPrompt(){
+    if(!current){ roll(); return; }
+    const text = `Build me a ${current.t} as a single HTML file.\nIt should ${current.d.charAt(0).toLowerCase()+current.d.slice(1)}\nStyle: playful and colorful. Make it work on a phone too.`;
+    navigator.clipboard.writeText(text).then(()=>{
+      const old=copyBtn.textContent;
+      copyBtn.textContent='Copied!';
+      setTimeout(()=>copyBtn.textContent=old,1400);
+    }).catch(()=>{
+      copyBtn.textContent='Roll one first';
+      setTimeout(()=>copyBtn.textContent='Copy the prompt',1400);
+    });
+  }
+
+  rollBtn.addEventListener('click',roll);
+  copyBtn.addEventListener('click',copyPrompt);
+</script>
+</body>
+</html>

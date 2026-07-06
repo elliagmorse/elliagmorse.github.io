@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instructions | How This Site Was Built</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,900&family=Nunito:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#414B9E;--ceil:#9792CB;--purple:#AA74A0;--sand:#E2C99E;--ruby:#852736;
+    --cream:#FBF4E9;--ink:#2E2438;--soft:#6B5E6E;
+    --charcoal:#26262B;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{color:var(--ink);font-family:'Nunito',system-ui,sans-serif;line-height:1.55;min-height:100vh;
+    background:linear-gradient(160deg,var(--blue) 0%,var(--purple) 48%,var(--sand) 100%);background-attachment:fixed;}
+  .nav{max-width:860px;margin:0 auto;padding:24px 18px 0;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;}
+  .brand{font-family:'Fraunces',serif;font-weight:900;font-size:26px;color:var(--cream);}
+  .nav-links{display:flex;gap:8px;flex-wrap:wrap;}
+  .nav-links a{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;color:var(--blue);background:var(--cream);padding:9px 16px;border-radius:40px;border:2px solid var(--blue);transition:transform .15s,background .15s,color .15s;}
+  .nav-links a:hover{transform:translateY(-2px) rotate(-1.5deg);background:var(--ceil);}
+  .nav-links a.active{background:var(--blue);color:var(--sand);}
+  .sheet{max-width:860px;margin:18px auto 44px;background:var(--cream);padding:48px 52px;border-radius:28px;border:3px solid var(--blue);box-shadow:10px 10px 0 var(--ruby);}
+  .eyebrow{display:inline-block;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cream);background:var(--ruby);padding:6px 13px;border-radius:30px;}
+  h1{font-family:'Fraunces',serif;font-size:clamp(40px,7.5vw,64px);font-weight:900;line-height:1;margin:16px 0 10px;color:var(--blue);letter-spacing:-.02em;}
+  .intro{font-size:17px;font-weight:600;color:var(--soft);max-width:62ch;margin-bottom:34px;}
+  .step{display:flex;gap:20px;padding:22px 0;border-top:2px dashed var(--ceil);}
+  .step:first-of-type{border-top:3px solid var(--blue);}
+  .num{font-family:'Fraunces',serif;font-size:24px;font-weight:900;color:var(--cream);background:var(--ruby);min-width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .step:nth-child(even) .num{background:var(--blue);color:var(--sand);}
+  .step h2{font-family:'Fraunces',serif;font-size:22px;font-weight:900;color:var(--blue);margin-bottom:6px;padding-top:6px;}
+  .step p{font-size:15.5px;font-weight:600;color:var(--soft);}
+  .step p + p{margin-top:8px;}
+  .prompt{font-family:'Space Mono',monospace;font-size:13px;line-height:1.65;background:#fff;color:var(--charcoal);padding:18px 20px;border-radius:14px;margin:12px 0 4px;white-space:pre-wrap;border:2px solid var(--charcoal);box-shadow:4px 4px 0 rgba(38,38,43,.15);}
+  .prompt .label{display:block;color:#fff;background:var(--charcoal);font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin:-18px -20px 14px;padding:8px 20px;border-radius:12px 12px 0 0;}
+  .placeholder{margin-top:12px;border:2px dashed var(--purple);background:rgba(170,116,160,.08);border-radius:14px;padding:26px 22px;text-align:center;}
+  .placeholder .pin{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--purple);}
+  .placeholder p{font-size:14.5px;font-weight:600;color:var(--soft);margin-top:8px;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
+  .chips span{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;background:var(--ceil);color:var(--blue);padding:6px 13px;border-radius:30px;border:2px solid var(--blue);}
+  .callout{margin-top:34px;background:var(--ceil);border:3px solid var(--blue);padding:22px 24px;border-radius:20px;}
+  .callout h3{font-family:'Fraunces',serif;font-size:19px;font-weight:900;color:var(--blue);margin-bottom:6px;}
+  .callout p{font-size:14.5px;font-weight:600;color:var(--ink);}
+  .footer{margin-top:32px;text-align:center;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--soft);text-transform:uppercase;}
+  a{color:var(--ruby);font-weight:700;}
+  strong{color:var(--blue);}
+  @media(max-width:600px){.sheet{padding:32px 24px;border-radius:22px;box-shadow:6px 6px 0 var(--ruby);}.nav{justify-content:center;}}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;}}
+</style>
+</head>
+<body>
+  <nav class="nav">
+    <span class="brand">Ellia Morse</span>
+    <div class="nav-links">
+      <a href="index.html">About Me</a>
+      <a href="showcase.html">Showcase</a>
+      <a href="instructions.html" class="active">Instructions</a>
+    </div>
+  </nav>
+
+  <div class="sheet">
+    <span class="eyebrow">How This Site Was Built</span>
+    <h1>Build this site with Claude</h1>
+    <p class="intro">This is the exact process behind the site you are looking at: two linked pages built with Claude, no coding background needed, and hosted online for free. A first page about you, and a Showcase page holding one working project you choose. Follow the same steps to make your own. Save your chat as you go, because the prompts are the assignment.</p>
+
+    <div class="step">
+      <div class="num">1</div>
+      <div>
+        <h2>Ask Claude to build your first page</h2>
+        <p>Open a new chat and describe the page you want in your own words. Tell Claude who it is for and how it should look. The only parts that need to stay exact are the technical ones below, so Claude gives you files you can save and host.</p>
+        <div class="prompt"><span class="label">Keep these technical bits, fill in the rest yourself</span>Build my first page as a single file named index.html.
+Put a nav bar at the top that links to index.html and showcase.html.
+Make it work on a phone.
+[Then describe yourself and the look you want in your own words.]</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="num">2</div>
+      <div>
+        <h2>Watch it build, then refine</h2>
+        <p>Claude creates the page in a panel next to the chat and shows it live. Read it, then ask for small, specific changes one at a time so you can see each result.</p>
+        <div class="chips">
+          <span>make the heading bigger</span>
+          <span>add an interests section</span>
+          <span>use these five colors</span>
+          <span>tighten the bio</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="num">3</div>
+      <div>
+        <h2>Scaffold your Showcase page</h2>
+        <p>Set up the second page now as an empty shell. You will build your real project into it later as a separate assignment, so for now you just need a placeholder that links up with your first page and matches the style.</p>
+        <div class="prompt"><span class="label">Keep these technical bits, fill in the rest yourself</span>Now build a placeholder second page named showcase.html.
+Give it the same nav bar linking index.html and showcase.html, and the same look as my first page.
+Add a heading and a short line saying the project is coming soon. I will replace this with my real project later.
+Make it work on a phone.</div>
+        <div class="placeholder">
+          <span class="pin">Your showcase project</span>
+          <p>This page is just a shell for now. You will swap in your finished project when that assignment comes around.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="num">4</div>
+      <div>
+        <h2>Check the work</h2>
+        <p>Claude sometimes invents details or writes something that does not read right. Look over both pages in the preview. Replace any placeholder text with your real information, and make sure the wording sounds like you. Ask yourself if anything is made up or off. Catching what Claude got wrong is the real skill. You will test the links and buttons once the site is live in a later step.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="num">5</div>
+      <div>
+        <h2>Get the files out</h2>
+        <p>You have two ways to save each file out of the chat. On the file Claude shares in the conversation, press the download button on it directly. Or, if you have the example site open in Claude, use the dropdown next to <strong>Copy</strong> in the top corner of the preview and choose download from there.</p>
+        <p>Save them named exactly <strong>index.html</strong> and <strong>showcase.html</strong>, and keep both in the same folder so the navigation links find each other.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="num">6</div>
+      <div>
+        <h2>Publish it so it stays online</h2>
+        <p>This is how your site gets a real web address that stays up for free. Take it slowly, the exact names matter.</p>
+        <p><strong>1. Make a free GitHub account.</strong> Go to <strong>github.com</strong>, sign up, and pick a username. Your username becomes part of your web address, so choose something you are happy to share. Confirm your email when GitHub asks.</p>
+        <p><strong>2. Create a new repository.</strong> A repository, or repo, is just a folder for your project. Click the plus sign in the top right and choose "New repository." Name it exactly <strong>username.github.io</strong>, swapping in your real username, all lowercase. That precise name is the trick that turns the repo into a live website. Set it to Public, and click "Create repository."</p>
+        <p><strong>3. Upload your files.</strong> On the new repo page, click the blue text that says "uploading an existing file." Drag in both <strong>index.html</strong> and <strong>showcase.html</strong> at the same time. Scroll down and click the green "Commit changes" button to save them.</p>
+        <p><strong>4. Turn on GitHub Pages.</strong> Click the <strong>Settings</strong> tab at the top of the repo, then <strong>Pages</strong> in the left sidebar. Under "Branch," open the dropdown, choose <strong>main</strong>, leave the folder as <strong>/ (root)</strong>, and click Save.</p>
+        <p><strong>5. Visit your live site.</strong> Wait about a minute, then go to <strong>https://username.github.io</strong> with your username. Your site is now live and free to keep. If it does not load right away, give it another minute and refresh, since the first publish can be slow.</p>
+        <p><strong>6. Test it now that it is live.</strong> Click between your two pages to check the nav links work, and try anything interactive on the page. If something is off, fix the files and upload them again the same way.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <h3>What you are turning in</h3>
+      <p>Submit three things: your live site link, the HTML files, and your full chat with Claude. The chat is the real evidence. It shows the context you gave, the changes you asked for, and the moments you caught Claude getting something wrong. That judgment is the point of the assignment.</p>
+    </div>
+
+    <div class="footer">AI Literacy Project &middot; Made with Claude</div>
+  </div>
+</body>
+</html>
