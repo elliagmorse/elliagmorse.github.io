@@ -79,8 +79,10 @@
   .callout.safe h2{color:var(--ruby);}
   .map{margin:26px 0 8px;}
   .map h2{font-family:'Fraunces',serif;font-size:23px;font-weight:900;color:var(--blue);margin-bottom:8px;}
-  .map ol{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;}
-  .map a{display:block;font-size:16px;font-weight:800;text-decoration:none;color:var(--blue);padding:9px 14px;border:2px solid var(--blue);border-radius:12px;background:#fff;}
+  .map p{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:12px;}
+  .map ol{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));grid-auto-rows:1fr;gap:8px;}
+  .map li{display:flex;}
+  .map a{display:flex;align-items:center;width:100%;font-size:16px;font-weight:800;text-decoration:none;color:var(--blue);padding:9px 14px;border:2px solid var(--blue);border-radius:12px;background:#fff;}
   .map a:hover{background:var(--ceil);}
   .prompt{position:relative;}
   .copy{position:absolute;top:4px;right:6px;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:var(--charcoal);background:var(--sand);border:0;border-radius:8px;padding:5px 12px;cursor:pointer;}
@@ -141,13 +143,15 @@
         <li>Your school, your team, or where you are at certain times</li>
         <li>Your birthday or exact age</li>
         <li>Passwords</li>
-        <li>Photos of yourself, or anything about your friends or family without their OK</li>
+        <li>Links to other websites</li>
+        <li>Photos of yourself, or anything about your friends or family without their permission</li>
       </ul>
       <p>Use your first name or a nickname. Share your interests, your ideas, and the things you make. If you are not sure about something, leave it out and ask your teacher.</p>
     </div>
 
     <nav class="map" aria-label="Steps on this page">
       <h2>The 7 steps</h2>
+      <p><strong>Read through all of the instructions first.</strong> Then go back to the top and follow them step by step.</p>
       <ol>
         <li><a href="#step1">1. Ask Claude for your first page</a></li>
         <li><a href="#step2">2. Make it better</a></li>
@@ -170,13 +174,14 @@
           <li>Press <strong>Copy</strong> on the box below, then paste it into the chat.</li>
           <li>Delete the part in [brackets]. Type your own ideas there, in your own words.</li>
           <li>Send it.</li>
+          <li>Wait for a response. When generating code for a website, Claude may take a little longer. Do not be surprised if it takes a minute or more.</li>
         </ol>
         <div class="prompt"><span class="label">Keep these lines exactly. Add your own ideas.</span>Build my first page as a single file named index.html.
 Put a nav bar at the top that links to index.html and showcase.html.
 Make it work on a phone.
 Only use my first name. Do not make up facts about me.
 [Then describe yourself and the look you want in your own words.]</div>
-        <p style="margin-top:14px"><strong>Why those lines matter:</strong> they tell Claude the file names and links your website needs to work later. A <strong>nav bar</strong> is the row of links that lets people move between pages. The rest is up to you.</p>
+        <p style="margin-top:14px"><strong>Why those lines matter:</strong> they tell Claude the file names and links your website needs to work later. A <strong>nav bar</strong> is the row of links that lets people move between pages. The prompt also mentions <strong>HTML</strong> files. HTML stands for Hypertext Markup Language. An HTML file contains code that defines the structure of a webpage. The rest is up to you.</p>
         <p style="margin-top:10px">Not sure what to write? Answer these questions:</p>
         <ul>
           <li>Who will visit this page?</li>
@@ -185,7 +190,8 @@ Only use my first name. Do not make up facts about me.
           <li>What colors do you want?</li>
         </ul>
         <div class="prompt sample"><span class="label">Example only. Use your own ideas.</span>My name is Sam. This page is for my classmates and teacher. I love drawing comics, skateboarding, and my dog. I want it to feel bright and playful, with orange and teal, and a section that shows my three favorite hobbies.</div>
-        <div class="note ok"><b>You'll know it worked when</b>Claude shows you a page, usually in a panel next to the chat.</div>
+        <div class="note ok"><b>You'll know it worked when</b>Claude shows you a page, usually in a panel next to the chat. Not everything will work yet. For example, the Showcase link in your nav bar has nowhere to go because you have not created that page. You will make it in Step 3.</div>
+        <div class="note stop"><b>If you see this message, select No</b>You may run into the prompt "Claude wants to open a browser window to check the open tabs in Chrome on your computer." Select <strong>No</strong>.</div>
       </div>
     </div>
 
@@ -267,13 +273,12 @@ Make it work on a phone.</div>
           <li><strong>index.html</strong></li>
           <li><strong>showcase.html</strong></li>
         </ul>
-        <p style="margin-top:10px">Use all lowercase letters with no spaces. Your site will not work with a name like Index.html or index(1).html. To fix a name, right-click the file (on a Chromebook, tap with two fingers) and choose <strong>Rename</strong>.</p>
-        <p style="margin-top:10px">Keep both files together in one folder. Your nav bar links need to find each other.</p>
+        <p style="margin-top:10px">Use all lowercase letters with no spaces. Your site will not work with a name like Index.html or index(1).html. If you download a page more than once, your computer may add a number to the new file's name. You may need to delete the old file from your Downloads folder before you can rename the new one. To fix a name, right-click the file (on a Chromebook, tap with two fingers) and choose <strong>Rename</strong>.</p>
         <p style="margin-top:10px"><strong>Why is it called index?</strong> When someone visits a website, the browser looks for a file named index.html first. It is the front door of your site.</p>
         <details>
           <summary>Stuck? I can't find a download button</summary>
           <div>
-            <p>You can skip downloading. Ask Claude to show the code for the page, press Copy, and keep going. In Step 6, use "Add file," then "Create new file." Name the file index.html, paste in the code, and commit it. Do the same for showcase.html.</p>
+            <p>You can skip downloading. Ask Claude to show the code for the page, press Copy, and keep going. In Step 6, on your new repo page, click the blue text that says "creating a new file." Name the file index.html, paste in the code, and commit it. For showcase.html, use "Add file," then "Create new file," and do the same thing.</p>
           </div>
         </details>
       </div>
@@ -284,7 +289,7 @@ Make it work on a phone.</div>
       <div>
         <h2>Put your site online</h2>
         <p class="goal">Goal: get a real web address that anyone can visit.</p>
-        <p>You will use <strong>GitHub</strong>, a free website where people store and share projects. Its service called <strong>GitHub Pages</strong> can turn your files into a live website. Go slowly here. Every letter in the names matters.</p>
+        <p>You will use <strong>GitHub</strong>, a free website where people store and share projects. Its service called <strong>GitHub Pages</strong> can turn your files into a live website.</p>
 
         <h3 class="sub">Part A: Make a GitHub account</h3>
         <div class="note stop"><b>Check first</b>GitHub's rules say you must be at least 13. If you are 12 or younger, stop here and talk to your teacher.</div>
@@ -302,14 +307,12 @@ Make it work on a phone.</div>
           <li>Click the plus sign (+) in the top right corner and choose <strong>New repository</strong>.</li>
           <li>In the name box, type your username followed by <strong>.github.io</strong>. If your username is skatecomics22, you type <strong>skatecomics22.github.io</strong>. Use all lowercase letters, even if your username has capitals.</li>
           <li>Set it to <strong>Public</strong>.</li>
-          <li>Turn on <strong>Add README</strong>. This puts a small starter file in your repo.</li>
-          <li>Click <strong>Create repository</strong>.</li>
+          <li>Click <strong>Create repository</strong>. You can ignore the options for adding a license and a README.</li>
         </ol>
-        <div class="note"><b>Why the name matters</b>That exact name tells GitHub that this repo is your website. If the name is even a little different, your site will not show up at your address.</div>
 
         <h3 class="sub">Part C: Upload your files</h3>
         <ol>
-          <li>On your repo page, click <strong>Add file</strong>, then <strong>Upload files</strong>.</li>
+          <li>On your new repo page, click the blue text that says <strong>uploading an existing file</strong>. It may also look like a plus (+) button.</li>
           <li>Drag <strong>index.html</strong> and <strong>showcase.html</strong> into the box together.</li>
           <li>Wait until you see both file names listed.</li>
           <li>Scroll down and click the green <strong>Commit changes</strong> button.</li>
@@ -319,10 +322,10 @@ Make it work on a phone.</div>
 
         <h3 class="sub">Part D: Turn on GitHub Pages</h3>
         <ol>
-          <li>Click the <strong>Settings</strong> tab in the row of tabs at the top of your repo. This is a different Settings from the one in Part A.</li>
+          <li>Click the <strong>Settings</strong> tab in the row of tabs at the top of your repo. This is a different Settings from the one in Part A. If you are not in full screen, you may have to click <strong>More</strong> to find it.</li>
           <li>In the list on the left, click <strong>Pages</strong>.</li>
           <li>Under <strong>Source</strong>, choose <strong>Deploy from a branch</strong>.</li>
-          <li>Under <strong>Branch</strong>, open the menu and choose <strong>main</strong>. Leave the folder as <strong>/ (root)</strong>.</li>
+          <li>Under <strong>Branch</strong>, open the menu that says <strong>None</strong> and choose <strong>main</strong>. Leave the folder as <strong>/ (root)</strong>.</li>
           <li>Click <strong>Save</strong>.</li>
         </ol>
 
@@ -354,9 +357,7 @@ Make it work on a phone.</div>
               <dt>GitHub asks me to set up two-factor authentication.</dt>
               <dd>This is an extra lock on your account. It may ask you to use a phone or an app. Ask your teacher or a trusted adult to help you.</dd>
               <dt>I see a 404 or "There isn't a GitHub Pages site here."</dt>
-              <dd>Wait 10 minutes and refresh. Then check that your repo name is exactly username.github.io, your repo is Public, and you clicked Save in Part D.</dd>
-              <dt>My address shows a plain page instead of my site.</dt>
-              <dd>GitHub may be showing your README. Check that index.html is in your repo, spelled in all lowercase.</dd>
+              <dd>Wait 10 minutes and refresh. Then check that your repo name is exactly username.github.io, your repo is Public, index.html is in your repo in all lowercase, and you clicked Save in Part D.</dd>
               <dt>A nav link goes to a 404 page.</dt>
               <dd>Check that showcase.html is in your repo and spelled exactly right. Capital letters count.</dd>
               <dt>I still see my old page.</dt>
