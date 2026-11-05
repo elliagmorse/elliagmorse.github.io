@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Instructions | How This Site Was Built</title>
+<title>Instructions | Build Your Own Website</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,900&family=Nunito:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -47,6 +47,60 @@
   .footer{margin-top:32px;text-align:center;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--soft);text-transform:uppercase;}
   a{color:var(--ruby);font-weight:700;}
   strong{color:var(--blue);}
+
+  .step{padding:30px 0;}
+  .step>div:last-child{min-width:0;flex:1;}
+  .step h2{font-size:25px;}
+  .step p,.step li{font-size:17px;font-weight:600;color:var(--ink);}
+  .goal{font-size:18px!important;font-weight:700!important;color:var(--soft)!important;margin-bottom:12px;}
+  .intro{font-size:18px;color:var(--ink);}
+  .step ol,.step ul{margin:12px 0 0 24px;}
+  .step li{margin-top:9px;padding-left:4px;}
+  .step li::marker{font-weight:800;color:var(--ruby);}
+  h3.sub{font-family:'Fraunces',serif;font-size:20px;font-weight:900;color:var(--ruby);margin:26px 0 2px;}
+  .note{margin-top:16px;padding:14px 18px;border-radius:14px;border:2px solid var(--blue);background:rgba(151,146,203,.2);}
+  .note.stop{border-color:var(--ruby);background:rgba(133,39,54,.08);}
+  .note.ok{border-color:#3C6E4F;background:rgba(60,110,79,.1);}
+  .num{align-self:flex-start;width:44px;}
+  .note{font-size:16.5px;font-weight:600;}
+  .callout ul + p{margin-top:12px;}
+  .note b{display:block;color:var(--blue);font-weight:800;margin-bottom:2px;}
+  .note.stop b{color:var(--ruby);}
+  .note.ok b{color:#2F5A40;}
+  .note ul{margin-top:6px;}
+  .note li{margin-top:5px;}
+  .callout.first{margin:0 0 8px;}
+  .callout h2{font-family:'Fraunces',serif;font-size:23px;font-weight:900;color:var(--blue);margin-bottom:6px;}
+  .callout p,.callout li{font-size:17px;}
+  .callout ul{margin:8px 0 0 22px;}
+  .callout li{margin-top:7px;font-weight:600;color:var(--ink);}
+  .callout p + p{margin-top:10px;}
+  .callout.safe{background:rgba(226,201,158,.5);border-color:var(--ruby);box-shadow:5px 5px 0 var(--ruby);margin-top:26px;}
+  .callout.safe h2{color:var(--ruby);}
+  .map{margin:26px 0 8px;}
+  .map h2{font-family:'Fraunces',serif;font-size:23px;font-weight:900;color:var(--blue);margin-bottom:8px;}
+  .map ol{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;}
+  .map a{display:block;font-size:16px;font-weight:800;text-decoration:none;color:var(--blue);padding:9px 14px;border:2px solid var(--blue);border-radius:12px;background:#fff;}
+  .map a:hover{background:var(--ceil);}
+  .prompt{position:relative;}
+  .copy{position:absolute;top:4px;right:6px;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:var(--charcoal);background:var(--sand);border:0;border-radius:8px;padding:5px 12px;cursor:pointer;}
+  .prompt .label{padding-right:92px;}
+  .prompt.sample{border-color:var(--blue);}
+  .prompt.sample .label{background:var(--blue);}
+  .chips span{font-size:13px;}
+  details{margin-top:16px;border:2px solid var(--purple);border-radius:14px;background:#fff;}
+  summary{cursor:pointer;font-weight:800;font-size:17px;color:var(--blue);padding:12px 16px;}
+  details>div{padding:0 16px 14px;}
+  details dt{font-weight:800;color:var(--ruby);margin-top:12px;font-size:16.5px;}
+  details dd{font-size:16.5px;font-weight:600;color:var(--ink);}
+  .words{margin-top:34px;}
+  .words h2{font-family:'Fraunces',serif;font-size:25px;font-weight:900;color:var(--blue);margin-bottom:6px;}
+  .words dl{display:grid;grid-template-columns:minmax(120px,170px) 1fr;gap:9px 18px;margin-top:10px;}
+  .words dt{font-weight:800;color:var(--ruby);font-size:16.5px;}
+  .words dd{font-weight:600;font-size:16.5px;}
+  a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--ruby);outline-offset:2px;}
+  .step{scroll-margin-top:12px;}
+  @media(max-width:600px){.step{flex-direction:column;gap:10px;}.words dl{grid-template-columns:1fr;gap:2px;}.words dd{margin-bottom:10px;}.step ol,.step ul{margin-left:20px;}}
   @media(max-width:600px){.sheet{padding:32px 24px;border-radius:22px;box-shadow:6px 6px 0 var(--ruby);}.nav{justify-content:center;}}
   @media(prefers-reduced-motion:reduce){*{transition:none!important;}}
 </style>
@@ -63,99 +117,331 @@
 
   <div class="sheet">
     <span class="eyebrow">How This Site Was Built</span>
-    <h1>Build this site with Claude</h1>
-    <p class="intro">This is the exact process behind the site you are looking at: two linked pages built with Claude, no coding background needed, and hosted online for free. A first page about you, and a Showcase page holding one working project you choose. Follow the same steps to make your own. Save your chat as you go, because the prompts are the assignment.</p>
+    <h1>Build your own website with Claude</h1>
+    <p class="intro">You are about to make a real website that anyone can visit. It will have two pages: a first page about you, and a Showcase page where a project you choose will go later. You do not need to know how to code, and it is free to put online. These are the same steps used to make this site. Go in order and take your time.</p>
+    <p class="intro"><strong>One big thing to remember:</strong> save your chat with Claude. Your chat is part of your assignment.</p>
 
-    <div class="step">
+    <div class="callout first">
+      <h2>Before you start</h2>
+      <p>You will need:</p>
+      <ul>
+        <li>A laptop or Chromebook. A phone makes these steps much harder.</li>
+        <li>A way to use Claude. Your teacher will tell you which one to use.</li>
+        <li>An email address you can open right now, for your GitHub account. Check with your teacher about which email to use.</li>
+      </ul>
+      <p><strong>Check the age rules with your teacher first.</strong> Claude and GitHub each have a minimum age. Use only the accounts your teacher tells you to use. Do not make an account on your own, and never enter a fake birthday.</p>
+    </div>
+
+    <div class="callout safe">
+      <h2>Stay safe: your site is public</h2>
+      <p>Anyone in the world can see your site, including people you do not know. Things you post can be saved by others, even after you delete them. So leave these off your site, and do not type them into Claude:</p>
+      <ul>
+        <li>Your last name</li>
+        <li>Your home address, phone number, or email</li>
+        <li>Your school, your team, or where you are at certain times</li>
+        <li>Your birthday or exact age</li>
+        <li>Passwords</li>
+        <li>Photos of yourself, or anything about your friends or family without their OK</li>
+      </ul>
+      <p>Use your first name or a nickname. Share your interests, your ideas, and the things you make. If you are not sure about something, leave it out and ask your teacher.</p>
+    </div>
+
+    <nav class="map" aria-label="Steps on this page">
+      <h2>The 7 steps</h2>
+      <ol>
+        <li><a href="#step1">1. Ask Claude for your first page</a></li>
+        <li><a href="#step2">2. Make it better</a></li>
+        <li><a href="#step3">3. Set up your Showcase page</a></li>
+        <li><a href="#step4">4. Check Claude's work</a></li>
+        <li><a href="#step5">5. Save your files</a></li>
+        <li><a href="#step6">6. Put your site online</a></li>
+        <li><a href="#step7">7. Keep improving it</a></li>
+      </ol>
+    </nav>
+
+    <div class="step" id="step1">
       <div class="num">1</div>
       <div>
-        <h2>Ask Claude to build your first page</h2>
-        <p>Open a new chat and describe the page you want in your own words. Tell Claude who it is for and how it should look. The only parts that need to stay exact are the technical ones below, so Claude gives you files you can save and host.</p>
-        <div class="prompt"><span class="label">Keep these technical bits, fill in the rest yourself</span>Build my first page as a single file named index.html.
+        <h2>Ask Claude for your first page</h2>
+        <p class="goal">Goal: Claude makes the first page of your website.</p>
+        <p>A <strong>prompt</strong> is the message you send to Claude. The better you describe what you want, the better your page will be.</p>
+        <ol>
+          <li>Open Claude and start a new chat.</li>
+          <li>Press <strong>Copy</strong> on the box below, then paste it into the chat.</li>
+          <li>Delete the part in [brackets]. Type your own ideas there, in your own words.</li>
+          <li>Send it.</li>
+        </ol>
+        <div class="prompt"><span class="label">Keep these lines exactly. Add your own ideas.</span>Build my first page as a single file named index.html.
 Put a nav bar at the top that links to index.html and showcase.html.
 Make it work on a phone.
+Only use my first name. Do not make up facts about me.
 [Then describe yourself and the look you want in your own words.]</div>
+        <p style="margin-top:14px"><strong>Why those lines matter:</strong> they tell Claude the file names and links your website needs to work later. A <strong>nav bar</strong> is the row of links that lets people move between pages. The rest is up to you.</p>
+        <p style="margin-top:10px">Not sure what to write? Answer these questions:</p>
+        <ul>
+          <li>Who will visit this page?</li>
+          <li>What do you like, make, or care about?</li>
+          <li>How should it feel? Calm, loud, funny, cozy?</li>
+          <li>What colors do you want?</li>
+        </ul>
+        <div class="prompt sample"><span class="label">Example only. Use your own ideas.</span>My name is Sam. This page is for my classmates and teacher. I love drawing comics, skateboarding, and my dog. I want it to feel bright and playful, with orange and teal, and a section that shows my three favorite hobbies.</div>
+        <div class="note ok"><b>You'll know it worked when</b>Claude shows you a page, usually in a panel next to the chat.</div>
       </div>
     </div>
 
-    <div class="step">
+    <div class="step" id="step2">
       <div class="num">2</div>
       <div>
-        <h2>Watch it build, then refine</h2>
-        <p>Claude creates the page in a panel next to the chat and shows it live. Read it, then ask for small, specific changes one at a time so you can see each result.</p>
+        <h2>Make it better</h2>
+        <p class="goal">Goal: change your page until it looks and sounds the way you want.</p>
+        <p>Your first try is only a start. Read the whole page, then ask for changes in the chat.</p>
+        <ol>
+          <li>Pick one thing you want to change.</li>
+          <li>Tell Claude exactly what to change.</li>
+          <li>Look at the new version.</li>
+          <li>Repeat until you like it.</li>
+        </ol>
+        <p style="margin-top:12px">Ask for <strong>one change at a time</strong>. That way you can see what each request did. Here are some you could try:</p>
         <div class="chips">
           <span>make the heading bigger</span>
           <span>add an interests section</span>
           <span>use these five colors</span>
-          <span>tighten the bio</span>
+          <span>make my bio shorter</span>
         </div>
+        <div class="note"><b>Tip: be specific</b>"Make it better" is hard for Claude to act on. "Make the title twice as big and change the background to light blue" tells Claude exactly what you want.</div>
       </div>
     </div>
 
-    <div class="step">
+    <div class="step" id="step3">
       <div class="num">3</div>
       <div>
-        <h2>Scaffold your Showcase page</h2>
-        <p>Set up the second page now as an empty shell. You will build your real project into it later as a separate assignment, so for now you just need a placeholder that links up with your first page and matches the style.</p>
-        <div class="prompt"><span class="label">Keep these technical bits, fill in the rest yourself</span>Now build a placeholder second page named showcase.html.
+        <h2>Set up your Showcase page</h2>
+        <p class="goal">Goal: make a simple second page that you will fill in later.</p>
+        <p>You will build your real project in a later assignment. For now, you only need a placeholder. A <strong>placeholder</strong> is something that saves a spot until the real thing is ready.</p>
+        <ol>
+          <li>Stay in the same chat, so Claude remembers your first page.</li>
+          <li>Press <strong>Copy</strong> on the box below, paste it in, and send it.</li>
+        </ol>
+        <div class="prompt"><span class="label">Keep these lines exactly</span>Now build a placeholder second page named showcase.html.
 Give it the same nav bar linking index.html and showcase.html, and the same look as my first page.
 Add a heading and a short line saying the project is coming soon. I will replace this with my real project later.
 Make it work on a phone.</div>
-        <div class="placeholder">
-          <span class="pin">Your showcase project</span>
-          <p>This page is just a shell for now. You will swap in your finished project when that assignment comes around.</p>
-        </div>
+        <div class="note ok"><b>You'll know it worked when</b>The new page matches your first page, has the same nav bar, and says your project is coming soon.</div>
       </div>
     </div>
 
-    <div class="step">
+    <div class="step" id="step4">
       <div class="num">4</div>
       <div>
-        <h2>Check the work</h2>
-        <p>Claude sometimes invents details or writes something that does not read right. Look over both pages in the preview. Replace any placeholder text with your real information, and make sure the wording sounds like you. Ask yourself if anything is made up or off. Catching what Claude got wrong is the real skill. You will test the links and buttons once the site is live in a later step.</p>
+        <h2>Check Claude's work</h2>
+        <p class="goal">Goal: find and fix anything that is wrong. This is the most important step.</p>
+        <p>Claude can make mistakes. It may even make up details that sound true. You know yourself better than Claude does, so you are the one in charge here. Finding what Claude got wrong is the main skill in this project.</p>
+        <p>Read both pages slowly, and look for:</p>
+        <ul>
+          <li><strong>Made-up facts.</strong> Did Claude add a hobby, an award, or a story that is not true?</li>
+          <li><strong>Leftover filler.</strong> Look for words like "[Your Name]" or "Lorem ipsum." That is fake text waiting for real text.</li>
+          <li><strong>Private details.</strong> Is anything from the Stay safe list on the page?</li>
+          <li><strong>Words that do not sound like you.</strong> Would you really say it that way?</li>
+          <li><strong>Typos.</strong> Look for spelling and grammar mistakes.</li>
+        </ul>
+        <p style="margin-top:12px">When you find a problem, tell Claude what is wrong and how to fix it. For example:</p>
+        <div class="prompt sample"><span class="label">Example</span>You wrote that I play soccer, but I don't. Please remove that and say that I like skateboarding.</div>
+        <p style="margin-top:12px">Your chat will show the mistakes you caught, and that is a good thing. You will test your links in Step 6, after your site is online.</p>
       </div>
     </div>
 
-    <div class="step">
+    <div class="step" id="step5">
       <div class="num">5</div>
       <div>
-        <h2>Get the files out</h2>
-        <p>You have two ways to save each file out of the chat. On the file Claude shares in the conversation, press the download button on it directly. Or, if you have the example site open in Claude, use the dropdown next to <strong>Copy</strong> in the top corner of the preview and choose download from there.</p>
-        <p>Save them named exactly <strong>index.html</strong> and <strong>showcase.html</strong>, and keep both in the same folder so the navigation links find each other.</p>
+        <h2>Save your files</h2>
+        <p class="goal">Goal: get both pages out of Claude and onto your computer.</p>
+        <p>Each page of your website is one <strong>file</strong>, like a document. To put your site online, you need a copy of each file.</p>
+        <ol>
+          <li>Find your first page in the chat.</li>
+          <li>Press the download button on the file. If you are looking at the page in the preview, open the small arrow next to <strong>Copy</strong> in the top corner and choose download.</li>
+          <li>Do the same thing for your Showcase page.</li>
+          <li>Open your <strong>Downloads</strong> folder and check the names.</li>
+        </ol>
+        <p style="margin-top:12px">The names must be exactly:</p>
+        <ul>
+          <li><strong>index.html</strong></li>
+          <li><strong>showcase.html</strong></li>
+        </ul>
+        <p style="margin-top:10px">Use all lowercase letters with no spaces. Your site will not work with a name like Index.html or index(1).html. To fix a name, right-click the file (on a Chromebook, tap with two fingers) and choose <strong>Rename</strong>.</p>
+        <p style="margin-top:10px">Keep both files together in one folder. Your nav bar links need to find each other.</p>
+        <p style="margin-top:10px"><strong>Why is it called index?</strong> When someone visits a website, the browser looks for a file named index.html first. It is the front door of your site.</p>
+        <details>
+          <summary>Stuck? I can't find a download button</summary>
+          <div>
+            <p>You can skip downloading. Ask Claude to show the code for the page, press Copy, and keep going. In Step 6, use "Add file," then "Create new file." Name the file index.html, paste in the code, and commit it. Do the same for showcase.html.</p>
+          </div>
+        </details>
       </div>
     </div>
 
-    <div class="step">
+    <div class="step" id="step6">
       <div class="num">6</div>
       <div>
-        <h2>Publish it so it stays online</h2>
-        <p>This is how your site gets a real web address that stays up for free. Take it slowly, the exact names matter.</p>
-        <p><strong>1. Make a free GitHub account.</strong> Go to <strong>github.com</strong>, sign up, and pick a username. Your username becomes part of your web address, so choose something you are happy to share. Confirm your email when GitHub asks.</p>
-        <p><strong>2. Create a new repository.</strong> A repository, or repo, is just a folder for your project. Click the plus sign in the top right and choose "New repository." Name it exactly <strong>username.github.io</strong>, swapping in your real username, all lowercase. That precise name is the trick that turns the repo into a live website. Set it to Public, and click "Create repository."</p>
-        <p><strong>3. Upload your files.</strong> On the new repo page, click the blue text that says "uploading an existing file." Drag in both <strong>index.html</strong> and <strong>showcase.html</strong> at the same time. Scroll down and click the green "Commit changes" button to save them.</p>
-        <p><strong>4. Turn on GitHub Pages.</strong> Click the <strong>Settings</strong> tab at the top of the repo, then <strong>Pages</strong> in the left sidebar. Under "Branch," open the dropdown, choose <strong>main</strong>, leave the folder as <strong>/ (root)</strong>, and click Save.</p>
-        <p><strong>5. Visit your live site.</strong> Wait about a minute, then go to <strong>https://username.github.io</strong> with your username. Your site is now live and free to keep. If it does not load right away, give it another minute and refresh, since the first publish can be slow.</p>
-        <p><strong>6. Test it now that it is live.</strong> Click between your two pages to check the nav links work, and try anything interactive on the page. If something is off, fix the files and upload them again the same way.</p>
+        <h2>Put your site online</h2>
+        <p class="goal">Goal: get a real web address that anyone can visit.</p>
+        <p>You will use <strong>GitHub</strong>, a free website where people store and share projects. Its service called <strong>GitHub Pages</strong> can turn your files into a live website. Go slowly here. Every letter in the names matters.</p>
+
+        <h3 class="sub">Part A: Make a GitHub account</h3>
+        <div class="note stop"><b>Check first</b>GitHub's rules say you must be at least 13. If you are 12 or younger, stop here and talk to your teacher.</div>
+        <ol>
+          <li>Go to <strong>github.com</strong> and choose to sign up.</li>
+          <li>Enter your email and make a strong password. Keep it somewhere safe, and do not share it with friends.</li>
+          <li>Pick a username. <strong>Your username will be part of your web address,</strong> so do not use your full name, your birthday, or your school. Something like <em>skatecomics22</em> works well.</li>
+          <li>GitHub will send a code to your email. Type it in to confirm your account.</li>
+          <li>Keep your email private: click your picture in the top right, then <strong>Settings</strong>, then <strong>Emails</strong>. Check the box for <strong>Keep my email addresses private</strong>.</li>
+        </ol>
+
+        <h3 class="sub">Part B: Make your repository</h3>
+        <p>A <strong>repository</strong>, or <strong>repo</strong>, is a folder for your project on GitHub.</p>
+        <ol>
+          <li>Click the plus sign (+) in the top right corner and choose <strong>New repository</strong>.</li>
+          <li>In the name box, type your username followed by <strong>.github.io</strong>. If your username is skatecomics22, you type <strong>skatecomics22.github.io</strong>. Use all lowercase letters, even if your username has capitals.</li>
+          <li>Set it to <strong>Public</strong>.</li>
+          <li>Turn on <strong>Add README</strong>. This puts a small starter file in your repo.</li>
+          <li>Click <strong>Create repository</strong>.</li>
+        </ol>
+        <div class="note"><b>Why the name matters</b>That exact name tells GitHub that this repo is your website. If the name is even a little different, your site will not show up at your address.</div>
+
+        <h3 class="sub">Part C: Upload your files</h3>
+        <ol>
+          <li>On your repo page, click <strong>Add file</strong>, then <strong>Upload files</strong>.</li>
+          <li>Drag <strong>index.html</strong> and <strong>showcase.html</strong> into the box together.</li>
+          <li>Wait until you see both file names listed.</li>
+          <li>Scroll down and click the green <strong>Commit changes</strong> button.</li>
+        </ol>
+        <div class="note"><b>What does commit mean?</b>To <strong>commit</strong> means to save your changes on GitHub. Think of it as pressing Save.</div>
+        <div class="note ok"><b>You'll know it worked when</b>You can see index.html and showcase.html in the list of files on your repo page.</div>
+
+        <h3 class="sub">Part D: Turn on GitHub Pages</h3>
+        <ol>
+          <li>Click the <strong>Settings</strong> tab in the row of tabs at the top of your repo. This is a different Settings from the one in Part A.</li>
+          <li>In the list on the left, click <strong>Pages</strong>.</li>
+          <li>Under <strong>Source</strong>, choose <strong>Deploy from a branch</strong>.</li>
+          <li>Under <strong>Branch</strong>, open the menu and choose <strong>main</strong>. Leave the folder as <strong>/ (root)</strong>.</li>
+          <li>Click <strong>Save</strong>.</li>
+        </ol>
+
+        <h3 class="sub">Part E: Visit your live site</h3>
+        <ol>
+          <li>Wait a minute or two. It can take up to 10 minutes.</li>
+          <li>In a new tab, go to <strong>https://username.github.io</strong>, using your username.</li>
+          <li>If you do not see your page yet, wait a little and refresh.</li>
+        </ol>
+        <div class="note ok"><b>You'll know it worked when</b>You see your page at your own web address. Your website is live!</div>
+
+        <h3 class="sub">Part F: Test everything</h3>
+        <p>Now test your site like a visitor would.</p>
+        <ul>
+          <li>Click each link in your nav bar. Does each one go to the right page?</li>
+          <li>Try anything on the page that you can click or use.</li>
+          <li>Open your site on a phone, if you can use one. Does it still look right?</li>
+        </ul>
+        <p style="margin-top:12px">If something is wrong, go back to Claude and fix it. Then follow Step 7 to upload the new file.</p>
+
+        <details>
+          <summary>Stuck? Fixes for common problems</summary>
+          <div>
+            <dl>
+              <dt>The email code never came.</dt>
+              <dd>Check your spam folder and wait a few minutes. Some school email accounts block outside email. Ask your teacher what to do.</dd>
+              <dt>GitHub will not open at school.</dt>
+              <dd>Your school may block it. Tell your teacher.</dd>
+              <dt>GitHub asks me to set up two-factor authentication.</dt>
+              <dd>This is an extra lock on your account. It may ask you to use a phone or an app. Ask your teacher or a trusted adult to help you.</dd>
+              <dt>I see a 404 or "There isn't a GitHub Pages site here."</dt>
+              <dd>Wait 10 minutes and refresh. Then check that your repo name is exactly username.github.io, your repo is Public, and you clicked Save in Part D.</dd>
+              <dt>My address shows a plain page instead of my site.</dt>
+              <dd>GitHub may be showing your README. Check that index.html is in your repo, spelled in all lowercase.</dd>
+              <dt>A nav link goes to a 404 page.</dt>
+              <dd>Check that showcase.html is in your repo and spelled exactly right. Capital letters count.</dd>
+              <dt>I still see my old page.</dt>
+              <dd>Wait a few minutes, then refresh. Your browser may be showing a saved copy.</dd>
+            </dl>
+          </div>
+        </details>
       </div>
     </div>
 
-    <div class="step">
+    <div class="step" id="step7">
       <div class="num">7</div>
       <div>
-        <h2>Iterate</h2>
-        <p>Your site is live, but it is never locked. Whenever you get a new version of a page from Claude, here is how to swap it in.</p>
-        <p>First, make sure the new file has the exact same name as the one it replaces, either <strong>index.html</strong> or <strong>showcase.html</strong>. If Claude named it something like index(1).html, rename it back to index.html, or GitHub will treat it as a separate file and your site will keep showing the old page.</p>
-        <p>Then go to your repository, click "Add file," then "Upload files," and drag the new file in. GitHub sees the matching name and overwrites the old one for you. Scroll down and click "Commit changes" to save. Your live site updates within a minute, so refresh the page to see it.</p>
-        <p>For a quick text tweak you do not even need a new file. Open the page in your repo, click the pencil icon in the top right, edit right there, and commit. The drag-and-drop overwrite is the easier route when you have a whole new file from Claude.</p>
+        <h2>Keep improving it</h2>
+        <p class="goal">Goal: learn how to update your site any time.</p>
+        <p>Your site is not locked. You can change it whenever you want. There are two ways.</p>
+
+        <h3 class="sub">For a bigger change: upload a new file</h3>
+        <ol>
+          <li>Ask Claude for the change, then download the new file.</li>
+          <li>Check the name. It must exactly match the file it replaces. If it is called index(1).html, rename it to index.html. If you do not, GitHub will keep it as a separate file and your site will keep showing the old page.</li>
+          <li>Go to your repo. Click <strong>Add file</strong>, then <strong>Upload files</strong>.</li>
+          <li>Drag in the new file. GitHub sees the same name and replaces the old one for you.</li>
+          <li>Scroll down and click <strong>Commit changes</strong>.</li>
+          <li>Wait a minute or two, then refresh your site.</li>
+        </ol>
+
+        <h3 class="sub">For a small fix: edit on GitHub</h3>
+        <p>Use this for something small, like a typo.</p>
+        <ol>
+          <li>In your repo, click the name of the file you want to change.</li>
+          <li>Click the pencil icon in the top right.</li>
+          <li>Find the words you want to change and fix them. Be careful not to change anything inside the &lt; and &gt; signs.</li>
+          <li>Click <strong>Commit changes</strong>.</li>
+        </ol>
       </div>
     </div>
 
     <div class="callout">
       <h3>What you are turning in</h3>
-      <p>Submit three things: your live site link, the HTML files, and your full chat with Claude. The chat is the real evidence. It shows the context you gave, the changes you asked for, and the moments you caught Claude getting something wrong. That judgment is the point of the assignment.</p>
+      <p>Turn in these three things:</p>
+      <ul>
+        <li><strong>Your live site link.</strong> This is your https://username.github.io address.</li>
+        <li><strong>Your HTML files.</strong> These are index.html and showcase.html.</li>
+        <li><strong>Your full chat with Claude.</strong> Ask your teacher how to turn it in. If you make a share link, do it when you are finished, because the link only includes messages sent before you made it.</li>
+      </ul>
+      <p>Your chat matters most. It shows what you told Claude, what you asked to change, and the mistakes you caught. Your teacher wants to see you thinking and making choices. A perfect first try is not the goal.</p>
+    </div>
+
+    <div class="words">
+      <h2>Words to know</h2>
+      <dl>
+        <dt>Prompt</dt><dd>The message you send to Claude.</dd>
+        <dt>File</dt><dd>One saved item on a computer, like a document or a photo.</dd>
+        <dt>HTML</dt><dd>The language web pages are written in. Files that end in .html are web pages.</dd>
+        <dt>Nav bar</dt><dd>The row of links that takes people to each page of a site. Nav is short for navigation.</dd>
+        <dt>Placeholder</dt><dd>Something that saves a spot until the real thing is ready.</dd>
+        <dt>GitHub</dt><dd>A website where people store and share projects.</dd>
+        <dt>Repository (repo)</dt><dd>A folder for your project on GitHub.</dd>
+        <dt>Upload</dt><dd>To send a file from your computer to a website.</dd>
+        <dt>Commit</dt><dd>To save your changes on GitHub.</dd>
+        <dt>Live</dt><dd>Online, so other people can visit it.</dd>
+      </dl>
     </div>
 
     <div class="footer">AI Literacy Project &middot; Made with Claude</div>
   </div>
+  <script>
+    document.querySelectorAll('.prompt:not(.sample)').forEach(function (box) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'copy';
+      btn.textContent = 'Copy';
+      btn.addEventListener('click', function () {
+        var text = box.cloneNode(true);
+        text.querySelectorAll('.label,.copy').forEach(function (el) { el.remove(); });
+        navigator.clipboard.writeText(text.textContent.trim()).then(function () {
+          btn.textContent = 'Copied!';
+          setTimeout(function () { btn.textContent = 'Copy'; }, 2000);
+        }).catch(function () {
+          btn.textContent = 'Select the text to copy';
+        });
+      });
+      box.appendChild(btn);
+    });
+  </script>
 </body>
 </html>
