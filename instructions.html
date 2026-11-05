@@ -95,6 +95,23 @@
   details>div{padding:0 16px 14px;}
   details dt{font-weight:800;color:var(--ruby);margin-top:12px;font-size:16.5px;}
   details dd{font-size:16.5px;font-weight:600;color:var(--ink);}
+  .day{margin-top:44px;padding-top:30px;border-top:4px solid var(--blue);scroll-margin-top:12px;}
+  .day>h2{font-family:'Fraunces',serif;font-size:clamp(32px,6vw,46px);font-weight:900;line-height:1.05;color:var(--blue);margin:14px 0 10px;}
+  .day .intro{margin-bottom:14px;}
+  .paths{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:14px;}
+  .paths div{background:#fff;border:2px solid var(--blue);border-radius:14px;padding:14px 16px;font-size:16px;font-weight:600;}
+  .paths b{display:block;font-family:'Fraunces',serif;font-size:19px;font-weight:900;color:var(--ruby);margin-bottom:4px;}
+  .swap{margin-top:14px;border:2px solid var(--blue);border-radius:14px;overflow:hidden;background:#fff;}
+  .swap div{display:grid;grid-template-columns:1fr 1fr;}
+  .swap div + div{border-top:2px solid var(--ceil);}
+  .swap span{padding:11px 16px;font-size:16px;font-weight:600;}
+  .swap span + span{border-left:2px solid var(--ceil);}
+  .swap .head span{font-weight:800;background:var(--ceil);color:var(--blue);}
+  .swap .head span + span{border-left-color:var(--blue);}
+  .levels{list-style:none;margin:14px 0 0!important;display:grid;gap:10px;}
+  .levels li{margin:0;padding:12px 16px;border-radius:14px;border:2px solid var(--blue);background:#fff;}
+  .levels b{color:var(--ruby);font-weight:800;}
+  @media(max-width:600px){.swap div{grid-template-columns:1fr;}.swap span + span{border-left:0;padding-top:0;}.swap .head span + span{display:none;}.swap .head span:first-child::after{content:" / Try this instead";}}
   .words{margin-top:34px;}
   .words h2{font-family:'Fraunces',serif;font-size:25px;font-weight:900;color:var(--blue);margin-bottom:6px;}
   .words dl{display:grid;grid-template-columns:minmax(120px,170px) 1fr;gap:9px 18px;margin-top:10px;}
@@ -160,6 +177,7 @@
         <li><a href="#step5">5. Save your files</a></li>
         <li><a href="#step6">6. Put your site online</a></li>
         <li><a href="#step7">7. Keep improving it</a></li>
+        <li><a href="#day2">Day 2: Build your project</a></li>
       </ol>
     </nav>
 
@@ -223,7 +241,7 @@ Only use my first name. Do not make up facts about me.
       <div>
         <h2>Set up your Showcase page</h2>
         <p class="goal">Goal: make a simple second page that you will fill in later.</p>
-        <p>You will build your real project in a later assignment. For now, you only need a placeholder. A <strong>placeholder</strong> is something that saves a spot until the real thing is ready.</p>
+        <p>You will build your real project on <a href="#day2">Day 2</a>. For now, you only need a placeholder. A <strong>placeholder</strong> is something that saves a spot until the real thing is ready.</p>
         <ol>
           <li>Stay in the same chat, so Claude remembers your first page.</li>
           <li>Press <strong>Copy</strong> on the box below, paste it in, and send it.</li>
@@ -407,6 +425,154 @@ Make it work on a phone.</div>
       <p>Your chat matters most. It shows what you told Claude, what you asked to change, and the mistakes you caught. Your teacher wants to see you thinking and making choices. A perfect first try is not the goal.</p>
     </div>
 
+    <section class="day" id="day2">
+      <span class="eyebrow">Next class</span>
+      <h2>Day 2: Build your Showcase project</h2>
+      <p class="intro">Today you turn your placeholder page into something that really works, like a game, a tool, or a creative project. You choose what to build, and you make the decisions. Claude helps with the code.</p>
+      <p class="intro"><strong>Your goal:</strong> finish one small project that works. A small project that works is better than a big project that doesn't.</p>
+
+      <div class="step" id="day2-1">
+        <div class="num">1</div>
+        <div>
+          <h2>Choose your idea</h2>
+          <p class="goal">Goal: pick one project. There are three ways to do it.</p>
+          <div class="paths">
+            <div><b>Pick one</b>Roll the generator on the <a href="showcase.html">Showcase page</a>, or look through the full list of 30 ideas.</div>
+            <div><b>Change one</b>Start with an idea and make it yours. A plain quiz could become a quiz about your favorite book series.</div>
+            <div><b>Invent one</b>Think of something you wish existed. It could help you with a hobby, make your friends laugh, or teach something you know well.</div>
+          </div>
+          <p style="margin-top:14px">Not sure what is possible? Ask Claude for ideas, then pick the one you like best:</p>
+          <div class="prompt"><span class="label">Try this if you need ideas</span>I like [your interests]. Give me 5 ideas for a small game or tool I could build in one class. It has to work in one web page with no accounts. Tell me how hard each one would be.</div>
+        </div>
+      </div>
+
+      <div class="step" id="day2-2">
+        <div class="num">2</div>
+        <div>
+          <h2>Check that your idea fits</h2>
+          <p class="goal">Goal: make sure you can finish it.</p>
+          <p>You can build a lot with one web page: games, quizzes, drawing tools, timers, calculators, story games, and more. Your project still has to follow these limits:</p>
+          <ul>
+            <li>It all fits in one file, <strong>showcase.html</strong>.</li>
+            <li>It works with no logins, accounts, or passwords.</li>
+            <li>It costs nothing to run.</li>
+            <li>It does not ask visitors for names, emails, or other personal information.</li>
+            <li>It uses your own ideas and characters, not ones from a game, show, or movie.</li>
+            <li>It follows the Stay Safe rules, and it is kind. No jokes about real people.</li>
+          </ul>
+          <p style="margin-top:14px">If your idea is too big, keep the fun part and make it smaller:</p>
+          <div class="swap">
+            <div class="head"><span>Too big for one class</span><span>Try this instead</span></div>
+            <div><span>A huge 3D world like Minecraft</span><span>A flat, 2D map where you collect items</span></div>
+            <div><span>A game people play online together</span><span>Two players taking turns on one computer</span></div>
+            <div><span>A high score list for the whole class</span><span>A best score saved on your own device</span></div>
+            <div><span>A chatbot that answers anything</span><span>A story game with answers you wrote ahead of time</span></div>
+            <div><span>A copy of Mario or Pokémon</span><span>A game with a character you invented</span></div>
+          </div>
+          <div class="note"><b>Good to know</b>Your site cannot share information between visitors. If your project saves something, like a score, it stays on the device where it was made. Other people will not see it.</div>
+        </div>
+      </div>
+
+      <div class="step" id="day2-3">
+        <div class="num">3</div>
+        <div>
+          <h2>Plan the main feature</h2>
+          <p class="goal">Goal: decide the one thing your project must do.</p>
+          <p>A <strong>feature</strong> is one thing your project can do. A score is a feature. A timer is a feature. Before you ask Claude for anything, write down your answers:</p>
+          <ul>
+            <li>What is my project?</li>
+            <li>Who is it for?</li>
+            <li>What is the one thing it must do?</li>
+          </ul>
+          <div class="prompt sample"><span class="label">Example</span>My project is a spelling quiz for my classmates. They can pick a word list and type their answers. The one thing it must do is show if each word is right or wrong.</div>
+        </div>
+      </div>
+
+      <div class="step" id="day2-4">
+        <div class="num">4</div>
+        <div>
+          <h2>Build the first version</h2>
+          <p class="goal">Goal: get the main feature working first.</p>
+          <ol>
+            <li>Go back to the same chat you used on Day 1, so Claude remembers your pages. If you can't find it, start a new chat and add your index.html file.</li>
+            <li>Press <strong>Copy</strong> on the box below and paste it into the chat.</li>
+            <li>Replace the part in [brackets] with your plan from the last step. If you copied a prompt from the generator, paste it there.</li>
+            <li>Send it, and wait for a response. A project can take a few minutes.</li>
+          </ol>
+          <div class="prompt"><span class="label">Keep these lines exactly. Add your plan.</span>Replace my placeholder page with a real project, in a single file named showcase.html.
+Keep the same nav bar linking index.html and showcase.html, and the same look as my first page.
+It must work with no logins, no accounts, and no outside services.
+Make it work on a phone.
+Build only the main feature first. I will ask for more later.
+[Paste your plan here.]</div>
+          <div class="note ok"><b>You'll know it worked when</b>You can use the main feature from start to finish, and your nav bar still shows up.</div>
+        </div>
+      </div>
+
+      <div class="step" id="day2-5">
+        <div class="num">5</div>
+        <div>
+          <h2>Try to break it</h2>
+          <p class="goal">Goal: find the bugs before anyone else does.</p>
+          <p>A <strong>bug</strong> is a mistake in the code that makes something work the wrong way. Claude can say a project works when it doesn't, so test it yourself:</p>
+          <ul>
+            <li>Use it from start to finish.</li>
+            <li>Do something unexpected. Click fast, leave a box empty, or type a silly answer.</li>
+            <li>Check the facts and numbers. Claude may make up things like quiz answers or prices.</li>
+            <li>Ask a classmate to try it without any help from you. Watch where they get stuck.</li>
+          </ul>
+          <p style="margin-top:12px">When you find a bug, tell Claude three things: what you did, what you expected, and what happened. Saying "it's broken" does not give Claude enough to work with.</p>
+          <div class="prompt sample"><span class="label">Example</span>When I click Start twice, the timer runs twice as fast. It should ignore the second click. Please fix that.</div>
+        </div>
+      </div>
+
+      <div class="step" id="day2-6">
+        <div class="num">6</div>
+        <div>
+          <h2>Level up your project</h2>
+          <p class="goal">Goal: explore and make it your own.</p>
+          <p>Once the main feature works, you can experiment. Save a copy of your working file first. Then add one feature at a time and test it each time.</p>
+          <ul class="levels">
+            <li><b>Must do:</b> The main feature works, and it matches the rest of your site.</li>
+            <li><b>Level up:</b> Add one idea of your own, like a score, a new level, sound, or a theme.</li>
+            <li><b>Stretch:</b> Only if you have time, add more. Try a harder mode, an animation, or a help screen.</li>
+          </ul>
+          <p style="margin-top:14px">Curious how it works, or what to try next? Ask Claude:</p>
+          <div class="chips">
+            <span>explain how the score works in simple words</span>
+            <span>give me 3 ways to make this more fun</span>
+            <span>is this feature realistic for one class?</span>
+          </div>
+          <div class="note"><b>Tip: the three-try rule</b>If the same problem is still there after three tries, stop adding to it. Make the idea smaller, go back to your working copy, or ask your teacher.</div>
+        </div>
+      </div>
+
+      <div class="step" id="day2-7">
+        <div class="num">7</div>
+        <div>
+          <h2>Publish and test it</h2>
+          <p class="goal">Goal: put your finished project on your live site.</p>
+          <ol>
+            <li>Download your new showcase.html. Check that the name is exact.</li>
+            <li>Upload it to your repo the same way you did in <a href="#step7">Step 7</a>.</li>
+            <li>Wait a minute or two, then open your live site.</li>
+            <li>Click between your two pages and test your project one more time.</li>
+          </ol>
+          <div class="note ok"><b>You're done when</b>Your project works on your live site, your nav bar links work, and you can explain what your project does and one thing you changed.</div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <h3>What you are turning in for Day 2</h3>
+        <ul>
+          <li><strong>Your live site link.</strong></li>
+          <li><strong>Your showcase.html file.</strong></li>
+          <li><strong>Your full chat with Claude,</strong> including your plan, the bugs you found, and the ideas you tried.</li>
+        </ul>
+        <p>Your chat shows your thinking. An idea that did not work still counts if you tried it, learned from it, and made a choice about what to do next.</p>
+      </div>
+    </section>
+
     <div class="words">
       <h2>Words to know</h2>
       <dl>
@@ -420,6 +586,8 @@ Make it work on a phone.</div>
         <dt>Upload</dt><dd>To send a file from your computer to a website.</dd>
         <dt>Commit</dt><dd>To save your changes on GitHub.</dd>
         <dt>Live</dt><dd>Online, so other people can visit it.</dd>
+        <dt>Feature</dt><dd>One thing your project can do, like keeping score.</dd>
+        <dt>Bug</dt><dd>A mistake in the code that makes something work the wrong way.</dd>
       </dl>
     </div>
 
